@@ -15,6 +15,9 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
 module virtualNetwork 'br/public:avm/res/network/virtual-network:0.5.3' = {
   name: 'virtualNetworkDeployment'
   scope: resourceGroup(resourceGroupName)
+  dependsOn: [
+    rg
+  ]
   params: {
     name: vnetName
     location: location
